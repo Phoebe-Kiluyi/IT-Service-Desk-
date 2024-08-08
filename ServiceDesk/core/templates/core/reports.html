@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Desk Reports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="py-6 px-8 flex items-center justify-between bg-slate-800 shadow-md">
+        <h1 class="text-3xl text-white font-bold">Service Desk Reports</h1>
+        <a href="{% url 'core:self_service' %}" class="text-white hover:text-gray-300 transition">Go to Self Service Portal</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-8 px-6">
+        <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Reports Summary</h2>
+
+            <!-- Tickets Report -->
+            <div class="bg-white shadow-md rounded-lg p-6 mb-6 border border-gray-200">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-700">Tickets Report</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li class="text-gray-600">Total Tickets: <span class="font-semibold text-gray-800">{{ tickets_count }}</span></li>
+                    <li class="text-gray-600">Unresolved Tickets: <span class="font-semibold text-gray-800">{{ unresolved_tickets }}</span></li>
+                    <li class="text-gray-600">Resolved Tickets: <span class="font-semibold text-gray-800">{{ resolved_tickets }}</span></li>
+                    <li class="text-gray-600">In Progress: <span class="font-semibold text-gray-800">{{ in_progress_tickets }}</span></li>
+                </ul>
+            </div>
+
+            <!-- Feedback Report -->
+            <div class="bg-white shadow-md rounded-lg p-6 mb-6 border border-gray-200">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-700">Feedback Report</h3>
+                <p class="text-gray-600">Total Feedbacks: <span class="font-semibold text-gray-800">{{ feedback_count }}</span></p>
+            </div>
+
+            <!-- IT Assets Report -->
+            <div class="bg-white shadow-md rounded-lg p-6 border border-gray-200">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-700">IT Assets Report</h3>
+                <p class="text-gray-600">Total IT Assets: <span class="font-semibold text-gray-800">{{ assets_count }}</span></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

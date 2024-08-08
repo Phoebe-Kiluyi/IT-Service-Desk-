@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Tickets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="py-6 px-8 flex items-center justify-between bg-slate-800 shadow-md">
+        <h1 class="text-3xl text-white font-semibold"><a href="{% url 'core:track_tickets' %}">My Tickets</a></h1>
+    </nav>
+
+    <main class="py-6 px-8">
+        <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Track Your Tickets</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-500 rounded-lg shadow-sm">
+                    <thead class="bg-gray-400 text-gray-900 uppercase text-sm leading-normal">
+                        <tr>
+                            <th class="py-3 px-6 text-left">Title</th>
+                            <th class="py-3 px-6 text-left">Description</th>
+                            <th class="py-3 px-6 text-left">Status</th>
+                            <th class="py-3 px-6 text-left">Created At</th>
+                            <th class="py-3 px-6 text-left">Resolved At</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-900 text-sm font-light">
+                        {% for ticket in tickets %}
+                        <tr class="border-b border-gray-400 hover:bg-gray-120">
+                            <td class="py-3 px-6 text-left">{{ ticket.title }}</td>
+                            <td class="py-3 px-6 text-left">{{ ticket.description }}</td>
+                            <td class="py-3 px-6 text-left">{{ ticket.get_status_display }}</td>
+                            <td class="py-3 px-6 text-left">{{ ticket.created_at }}</td>
+                            <td class="py-3 px-6 text-left">
+                                {% if ticket.resolved_at %}
+                                    {{ ticket.resolved_at }}
+                                {% else %}
+                                    <span class="text-red-500">Not resolved</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="py-3 px-6 text-center text-gray-500">No tickets found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

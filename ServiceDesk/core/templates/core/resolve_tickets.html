@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Resolve Tickets</title>
+</head>
+<body>
+    <nav class="py-6 px-8 flex items-center justify-between bg-slate-800">
+        <h1 class="text-3xl text-white"><a href="{% url 'core:resolve_tickets' %}">Resolve Tickets</a></h1>
+        <div class="space-x-4">
+            <a href="{% url 'core:my_tickets' %}" class="text-white">My Tickets</a>
+            <a href="{% url 'core:logout' %}" class="text-white">Logout</a>
+        </div>
+    </nav>
+
+    <main class="py-6 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Unresolved Tickets</h2>
+            <div class="grid grid-cols-1 gap-4">
+                {% for ticket in tickets %}
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold">{{ ticket.title }}</h3>
+                        <p class="text-gray-600">{{ ticket.description }}</p>
+                        <p>Status: {{ ticket.status }}</p>
+                        <p>Priority: {{ ticket.priority }}</p>
+                        <p>Created: {{ ticket.created_at }}</p>
+                        {% if ticket.resolved_at %}
+                            <p>Resolved: {{ ticket.resolved_at }}</p>
+                            <p>Resolution Notes: {{ ticket.resolution_notes }}</p>
+                        {% endif %}
+                        
+                        <!-- Ticket resolution form -->
+                        <form method="post" action="{% url 'core:resolve_tickets' %}">
+                            {% csrf_token %}
+                            
+                            <textarea name="resolution" placeholder="Resolution details..." rows="4" class="border rounded w-full p-2"></textarea>
+                            <button type="submit" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Resolve Ticket</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

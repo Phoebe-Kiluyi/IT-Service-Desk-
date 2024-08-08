@@ -1,0 +1,27 @@
+DONE Create base template
+DONE Create front page template
+DONE Create about page template
+DONE Create Sign up/ Log in templates
+DONE Basic list page for problems, todolist etc
+DONE Basic detail page for projects, todolist etc
+
+DONE Set up the dev environment
+DONE Create empty project
+DONE Create core app and front page
+DONE Create about page
+
+
+DONE Custom user model
+DONE Sign up
+DONE Log in
+
+DONE Request list page
+DONE Create request
+DONE Request detail page
+DONE Edit request
+DONE Delete request 
+
+
+
+
+

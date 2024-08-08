@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Ticket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="py-6 px-8 flex items-center justify-between bg-slate-800 shadow-md">
+        <h1 class="text-3xl text-white font-semibold"><a href="{% url 'core:track_tickets' %}">My Tickets</a></h1>
+    </nav>
+
+    <main class="py-6 px-8">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Submit a Ticket</h2>
+            <form method="post" enctype="multipart/form-data" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Title Field -->
+                <div>
+                    <label for="id_title" class="block text-sm font-medium text-gray-700">Title</label>
+                    <input type="text" name="title" id="id_title" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                </div>
+
+                <!-- Description Field -->
+                <div>
+                    <label for="id_description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea name="description" id="id_description" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required></textarea>
+                </div>
+
+                <!-- Priority Field -->
+                <div>
+                    <label for="id_priority" class="block text-sm font-medium text-gray-700">Priority</label>
+                    <select name="priority" id="id_priority" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+                <!-- Category Field -->
+                <div>
+                    <label for="id_category" class="block text-sm font-medium text-gray-700">Category</label>
+                    <select name="category" id="id_category" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <option value="IT Support">IT Support</option>
+                        <option value="Network Issue">Network Issue</option>
+                        <option value="Software Issue">Software Issue</option>
+                        <option value="Hardware Issue">Hardware Issue</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Due Date Field -->
+                <div>
+                    <label for="id_due_date" class="block text-sm font-medium text-gray-700">Due Date</label>
+                    <input type="date" name="due_date" id="id_due_date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                </div>
+
+                <!-- Attachment Field -->
+                <div>
+                    <label for="id_attachment" class="block text-sm font-medium text-gray-700">Attachment</label>
+                    <input type="file" name="attachment" id="id_attachment" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="max-w-xl mx-auto py-8 bg-slate-800 text-center">
+        <h1 class="text-2xl font-bold text-center mb-4">Admin Login</h1>
+        <form class="mt-6 px-8 space-y-4" method="post">
+            {% csrf_token %}
+            {{ form.as_p }} <!-- Renders form fields for username and password -->
+    
+            
+                <button type="submit" class="w-full py-2 px-4 rounded btn-primary hover:bg-sky-700">Login</button>
+            </div>
+        </form>
+        <div class="mt-6">
+            <p class="mt-4 text-sm text-gray-400 text-center">Not an Admin? <a href="{% url 'core:user_login' %}" class="text-sky-400 hover:underline">Login here</a></p>
+
+            </div>
+        
+    </div>
+    {% endblock %}
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Confirmation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <nav class="py-6 px-8 flex items-center justify-between bg-slate-800">
+        <h1 class="text-3xl text-white"><a href="{% url 'core:index' %}" class="hover:underline">Service Desk</a></h1>
+    </nav>
+
+    <main class="py-12 px-6 max-w-md mx-auto bg-white shadow-lg rounded-lg">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Logout Confirmation</h2>
+        <p class="text-gray-700 mb-6 text-center">You have been successfully logged out. We hope to see you again soon!</p>
+        <div class="space-y-4">
+            <a href="{% url 'core:user_login' %}" class="block text-center py-3 px-6 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">Login Again</a>
+            <a href="{% url 'core:signup' %}" class="block text-center py-3 px-6 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300">Go to Signup Page</a>
+        </div>
+    </main>
+</body>
+</html>

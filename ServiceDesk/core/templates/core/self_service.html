@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Additional styles can be added here if needed */
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="py-6 px-8 flex items-center justify-between bg-slate-800">
+        <h1 class="text-3xl text-white font-bold"><a href="{% url 'core:self_service' %}">Self Service</a></h1>
+    </nav>
+
+    <main class="py-6 px-8">
+        <!-- Search Bar -->
+        <div class="mb-6 max-w-4xl mx-auto">
+            <input type="text" placeholder="Search..." class="w-full py-2 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="mb-8 max-w-4xl mx-auto">
+            <h2 class="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
+            <ul class="space-y-4">
+                <li>
+                    <details class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+                        <summary class="font-semibold text-gray-800 cursor-pointer">How do I reset my password?</summary>
+                        <p class="mt-2 text-gray-600">You can reset your password by clicking on the 'Forgot Password' link on the login page.</p>
+                    </details>
+                </li>
+                <li>
+                    <details class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+                        <summary class="font-semibold text-gray-800 cursor-pointer">How do I submit a ticket?</summary>
+                        <p class="mt-2 text-gray-600">To submit a ticket, go to the 'Submit Ticket' page and fill out the required details.</p>
+                    </details>
+                </li>
+                <!-- Add more FAQs as needed -->
+            </ul>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="mb-8 max-w-4xl mx-auto">
+            <h2 class="text-2xl font-semibold mb-4">Quick Links</h2>
+            <div class="space-x-4">
+                <a href="{% url 'core:submit_ticket' %}" class="py-2 px-4 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">Submit a Ticket</a>
+                <a href="{% url 'core:track_tickets' %}" class="py-2 px-4 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition">Track Tickets</a>
+            </div>
+        </section>
+
+        <!-- Ticket Submission Form -->
+        <section class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-semibold mb-4">Submit a Ticket</h2>
+            <form method="post" action="{% url 'core:submit_ticket' %}" class="bg-white p-6 border border-gray-200 rounded-lg shadow-sm">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">Submit</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

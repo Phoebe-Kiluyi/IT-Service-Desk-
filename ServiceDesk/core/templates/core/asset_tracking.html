@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Tracking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .table-header {
+            background-color: #1e293b; /* slate-800 */
+            color: #fff;
+        }
+        .table-row:hover {
+            background-color: #f1f5f9; /* slate-100 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="py-6 px-8 flex items-center justify-between bg-slate-800 shadow-md">
+        <h1 class="text-3xl text-white font-semibold">
+            <a href="{% url 'core:asset_tracking' %}" class="hover:text-gray-300 transition">IT Assets</a>
+        </h1>
+        <div class="space-x-4">
+            <a href="{% url 'core:resolve_tickets' %}" class="text-white hover:text-gray-300 transition">Resolve Tickets</a>
+            <a href="{% url 'core:feedback_list' %}" class="text-white hover:text-gray-300 transition">User Reviews</a>
+            <a href="{% url 'core:logout' %}" class="text-white hover:text-gray-300 transition">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-6 px-8">
+        <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Asset Tracking</h2>
+                <input type="text" placeholder="Search assets..." class="border border-slate-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500">
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-slate-200 rounded-lg shadow-md">
+                    <thead>
+                        <tr class="table-header">
+                            <th class="py-3 px-6 text-left">Asset Name</th>
+                            <th class="py-3 px-6 text-left">Purchase Date</th>
+                            <th class="py-3 px-6 text-left">Employee</th>
+                            <th class="py-3 px-6 text-left">Contact</th>
+                            <th class="py-3 px-6 text-left">Employee No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for asset in assets %}
+                        <tr class="border-t table-row">
+                            <td class="py-3 px-6">{{ asset.asset_name }}</td>
+                            <td class="py-3 px-6">{{ asset.purchase_date }}</td>
+                            <td class="py-3 px-6">{{ asset.employee }}</td>
+                            <td class="py-3 px-6">{{ asset.contact }}</td>
+                            <td class="py-3 px-6">{{ asset.employee_number }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="py-3 px-6 text-center text-gray-500">No assets found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

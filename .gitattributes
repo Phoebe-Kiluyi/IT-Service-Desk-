@@ -1,0 +1,5 @@
+# Exclude all files in the `docs` directory from language statistics
+docs/* linguist-detectable=false
+
+# Specify that `.html` files should be counted as a different language
+*.html linguist-language="HTML"
